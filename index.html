@@ -1,228 +1,92 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="gameThreadApp">
-  <head>
+<head>
     <title>Automatically Build /r/collegebasketball Game Threads | Game Thread Builder</title>
     <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="/app/css/application.css" />
-    <link rel="stylesheet" type="text/css" href="/app/css/starter-template.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="/app/css/application.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="/app/css/starter-template.css" /> -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
-  </head>
-  <body ng-controller="GameThreadCtrl">
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">Game Thread Builder</a>
+    <style>
+        .panel-collapse {
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+    </style>
+</head>
+<body class="col-md-8 col-md-offset-2">
+    <!-- <page-header></page-header> -->
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <!-- <form novalidate class="simple-form" role="form"> -->
+                <!-- game information panel -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#gameInformationPanel">
+                            Game Information
+                        </a>
+                    </h4>
+                </div>
+                <div id="gameInformationPanel" class="panel-collapse collapse in">
+                    <game-information class="panel-body"></game-information>
+                </div>
+                <!-- away team panel -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#awayTeamPanel">
+                            Away Team
+                        </a>
+                    </h4>
+                </div>
+                <div id="awayTeamPanel" class="panel-collapse collapse">
+                    <away-team class="panel-body"></away-team>
+                </div>
+                <!-- home team panel -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#homeTeamPanel">
+                            Home Team
+                        </a>
+                    </h4>
+                </div>
+                <div id="homeTeamPanel" class="panel-collapse collapse">
+                    <home-team class="panel-body"></home-team>
+                </div>
+                <!-- media information panel -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#mediaInformationPanel">
+                            Media Information
+                        </a>
+                    </h4>
+                </div>
+                <div id="mediaInformationPanel" class="panel-collapse collapse">
+                    <media-information class="panel-body"></media-information>
+                </div>
+                <!-- game preview panel -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#gamePreviewPanel">
+                            Game Preview
+                        </a>
+                    </h4>
+                </div>
+                <div id="gamePreviewPanel" class="panel-collapse collapse">
+                    <game-preview class="panel-body"></game-preview>
+                </div>
+            <!-- </form> -->
         </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Home</a></li>
-<!--             <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
- -->          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
     </div>
+    <game-thread></game-thread>
 
-    <div class="container">
-      <div class="starter-template">
-        <h1>Build a Game Thread</h1>
-        <p class="lead">Game threads are hard enough without trying to remember all the reddit coding.<br />Fill out this form for instant game-thread awesomeness!</p>
-    <form novalidate class="simple-form" role="form">
-
-	<h1>Away Team</h1>
-	<p>
-		<div class="form-group">
-			<label for="away.rank">Rank</label><br />
-			<input class="form-control" placeholder="Use rank from sidebar" ng-model="away.rank" type="text" name="away.rank" size="2" />
-		</div>
-		<div class="form-group">
-			<label for="away.name">Team Name</label><br />
-			<input class="form-control" placeholder="" ng-model="away.name" type="text" name="away.name" />
-		</div>
-		<div class="form-group">
-			<label for="away.flair">Team Flair</label><br />
-			<span class="help"><a href="http://www.reddit.com/r/CollegeBasketball/comments/my8kj/announcement_flair_now_available/c3xl2ov">Look Up Flair</a></span><br />
-			<input class="form-control" placeholder="" ng-model="away.flair" type="text" name="away.flair" />
-		</div>
-		<div class="form-group">
-			<label for="away.record">Record</label><br />
-			<input class="form-control" placeholder="12-1, 7-0 MVC" ng-model="away.record" type="text" name="away.record" size="24" />
-		</div>
-		<div class="form-group">
-			<label for="away.subreddit">Subreddit</label><br />
-			<span class="help"><a href="http://www.reddit.com/r/CollegeBasketball/comments/1alhpd/a_bigger_better_list_of_teamspecific_subreddits/">Find School Subreddits</a></span><br />
-			<input class="form-control" placeholder="/r/AwayTeam" ng-model="away.subreddit" type="text" name="away.subreddit" size="24" />
-		</div>
-	</p>
-
-	<h1>Home Team</h1>
-	<p>
-		<div class="form-group">
-			<label for="home.rank">Rank</label><br />
-			<input class="form-control" placeholder="Use rank from sidebar" ng-model="home.rank" type="text" name="home.rank" size="2" />
-		</div>
-		<div class="form-group">
-			<label for="home.name">Team Name</label><br />
-			<input class="form-control" placeholder="" ng-model="home.name" type="text" name="home.name" />
-		</div>
-		<div class="form-group">
-			<label for="home.flair">Team Flair</label><br />
-			<span class="help"><a href="http://www.reddit.com/r/CollegeBasketball/comments/my8kj/announcement_flair_now_available/c3xl2ov">Look Up Flair</a></span><br />
-			<input class="form-control" placeholder="" ng-model="home.flair" type="text" name="home.flair" />
-		</div>
-		<div class="form-group">
-			<label for="home.record">Record</label><br />
-			<input class="form-control" placeholder="12-1, 7-0 PAC12" ng-model="home.record" type="text" name="home.record" size="24" />
-		</div>
-		<div class="form-group">
-			<label for="home.subreddit">Subreddit</label><br />
-			<span class="help"><a href="http://www.reddit.com/r/CollegeBasketball/comments/1alhpd/a_bigger_better_list_of_teamspecific_subreddits/">Find School Subreddits</a></span><br />
-			<input class="form-control" placeholder="/r/HomeTeam" ng-model="home.subreddit" type="text" name="home.subreddit" size="24" />
-		</div>
-	</p>
-
-	<h1>Media</h1>
-	<p>
-		<label for="television.channel">Television Channel</label><br />
-		<input class="form-control" placeholder="ESPN, ESPN2, CBS..."  name="television.channel" type="text" ng-model="television.channel" />
-	</p>
-	<p>
-		<label for="television.url">Television URL</label><br />
-		<input class="form-control" placeholder="http://cbssports.com" name="television.url" type="text" ng-model="television.url" />
-	</p>
-	<p>
-		<label for="radio.channel">Radio Stations</label><br />
-		<textarea rows="3" cols="60" class="form-control" placeholder="Cincinnati: 700 WLW-AM" name="radio.channel" type="text" ng-model="radio.channel"></textarea>
-	</p>
-	<p>
-		<label for="stream.name">Internet Stream Name</label><br />
-		<input class="form-control" placeholder="WatchESPN" name="stream.name" type="text" ng-model="stream.name" />
-	</p>
-	<p>
-		<label for="stream.url">Internet Stream URL</label><br />
-		<input class="form-control" placeholder="http://watchespn.com/" name="stream.url" type="text" ng-model="stream.url" />
-	</p>
-
-	<h1>Preview</h1>
-	<p>
-		<label for="preview.espn">ESPN Preview URL</label><br />
-		<input class="form-control" placeholder="" name="preview.espn" type="text" ng-model="preview.espn" size="48" />
-	</p>
-
-	<h1>Odds</h1>
-	<p>
-		<label for="odds.favorite">Favorite</label><br />
-		<input class="form-control" placeholder="Name of team expected to win" name="odds.favorite" type="text" ng-model="odds.favorite" />
-	</p>
-	<p>
-		<label for="odds.line">Line</label><br />
-		<span class="help"><a href="http://espn.go.com/ncb/lines">Look Up Lines</a></span><br />
-		<input class="form-control" placeholder="-10" name="odds.line" type="text" ng-model="odds.line" />
-	</p>
-	<p>
-		<label for="odds.ou">O/U</label><br />
-		<input class="form-control" placeholder="145.5" name="odds.ou" type="text" ng-model="odds.ou" />
-	</p>
-
-	<h1>Game Notes</h1>
-	<p>
-		<label for="game.notes">Game Notes</label><br />
-		<span class="help">History between the two teams</span><br />
-		<textarea class="form-control" placeholder="The home team leads the series 128-87 and has won the last 10 meetings" ng-model="game.notes" name="game.notes" rows="10" cols="60"></textarea>
-	</p>
-
-	<!-- <button ng-click="update(home)">SAVE</button> -->
-</form>
-
-<!-- <p>
-DEBUG: {{home | json}}
-</p>
- -->
-
-<h2>Game Thread: ({{away.rank}}) {{away.name}} @ ({{home.rank}}) {{home.name}} ({{game.time}} {{television.channel}})</h2>
-
-<textarea class="form-control" placeholder="145.5" rows="48" cols="72">
-###NCAA Basketball
-
----
-({{away.rank}}) [](/{{away.flair}}) **{{away.name}}** ({{away.record}}) @ ({{home.rank}}) [](/{{home.flair}}) **{{home.name}}** ({{home.record}})
-
-Tip-Off: {{info.when}}
-
-Venue: [{{venue.name}}]({{venue.link}})
-
------------------------------------------------------------------
-
-**[Join the live IRC chat on freenode, #redditcbb](http://webchat.freenode.net/?channels=#redditcbb)**
-
------------------------------------------------------------------
-
-**Television:**
-[{{television.channel}}]({{television.url}})
-
-**Radio:**
-[{{radio.station}}]({{radio.url}})
-
-**Internet Streams:**
-[{{stream.name}}]({{stream.url}})
-
------------------------------------------------------------------
-
-**Preview:**
-[ESPN]({{preview.espn}})
-
------------------------------------------------------------------
-
-**Odds**
-[](/{{odds.favorite}}){{odds.favorite}}
-
-**Game Line:** {{odds.line}}
-**O/U**: {{odds.ou}}
-
------------------------------------------------------------------
-
-**Game Notes:**
-{{game.notes}}
-
-**Thread Notes:**
-
-- Discuss whatever you wish. You can trash talk, but keep it civil.
-
-- Turning comment sort to 'new' will help you see the newest posts.
-
-- Try [Chrome Refresh](https://chrome.google.com/extensions/detail/aifhnlnghddfdaccgbbpbhjfkmncekmn) or Firefox's [ReloadEvery](https://addons.mozilla.org/en-US/firefox/addon/115/) to auto-refresh this tab.
-
-- You may also like [reddit stream](http://www.reddit.com/r/CFB/comments/wn9uj/lets_discuss_game_threads_come_fall/c5esw1u) to keep up with comments.
-
-- Check in on the /r/CollegeBasketball chat: **#redditcbb** on freenode([open in browser](http://webchat.freenode.net/?channels=#redditcbb)).
-
-- [Follow @reddit_cbb](https://twitter.com/reddit_cbb) on twitter for news, updates, and bad attempts at humor.
-
-- Show your team affiliation - get a team logo by clicking 'edit' in the column on the right
-
-
-
-**Subscribe to these communities**
-
-{{away.subreddit}}  | {{home.subreddit}}
-</textarea>
-      </div>
-</div>
-
-
+    <script type="text/javascript" src="/bower_components/jquery/dist//jquery.min.js"></script>
     <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bower_components/bootstrap/js/transition.js"></script>
     <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="/app.js"></script>
-  </body>
+</body>
 </html>
