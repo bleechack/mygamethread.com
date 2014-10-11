@@ -1,0 +1,26 @@
+<p>
+	<label for="preview.espn">ESPN Preview URL</label><br />
+	<input class="form-control" placeholder="" name="preview.espn" type="text" ng-model="preview.espn" size="48" />
+</p>
+
+<h1>Odds</h1>
+<p>
+	<label for="odds.favorite">Favorite</label><br />
+	<input class="form-control" placeholder="Name of team expected to win" name="odds.favorite" type="text" ng-model="odds.favorite" />
+</p>
+<p>
+	<label for="odds.line">Line</label><br />
+	<span class="help"><a href="http://espn.go.com/ncb/lines">Look Up Lines</a></span><br />
+	<input class="form-control" placeholder="-10" name="odds.line" type="text" ng-model="odds.line" />
+</p>
+<p>
+	<label for="odds.ou">O/U</label><br />
+	<input class="form-control" placeholder="145.5" name="odds.ou" type="text" ng-model="odds.ou" />
+</p>
+
+<h1>Game Notes</h1>
+<p>
+	<label for="game.notes">Game Notes</label><br />
+	<span class="help">History between the two teams</span><br />
+	<textarea class="form-control" placeholder="The home team leads the series 128-87 and has won the last 10 meetings" ng-model="game.notes" name="game.notes" rows="10" cols="60"></textarea>
+</p>

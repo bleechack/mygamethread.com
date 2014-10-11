@@ -1,28 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="gameThreadApp">
   <head>
+    <title>Automatically Build /r/collegebasketball Game Threads | Game Thread Builder</title>
+    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/app/css/application.css" />
+    <link rel="stylesheet" type="text/css" href="/app/css/starter-template.css" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
-   	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="app/css/starter-template.css">
-	<link rel="stylesheet" href="app/css/application.css">
-	<!-- Latest compiled and minified JavaScript -->
-    <title>Automatically Build /r/collegebasketball Game Threads | Game Thread Builder</title>
-
-    <!-- Bootstrap -->
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body ng-controller="GameThreadCtrl">
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -51,25 +39,6 @@
         <h1>Build a Game Thread</h1>
         <p class="lead">Game threads are hard enough without trying to remember all the reddit coding.<br />Fill out this form for instant game-thread awesomeness!</p>
     <form novalidate class="simple-form" role="form">
-    <h1>Game Information</h1>
-	<p>
-		<div class="form-group">
-			<label for="game.time">Tip-off Time</label><br />
-			<input class="form-control" placeholder="7:00 PM ET" ng-model="game.time" type="text" name="game.time" />
-		</div>
-		<div class="form-group">
-			<label for="game.date">Game Date</label><br />
-			<input class="form-control" placeholder="Feb. 1, 2014" ng-model="game.date" type="text" name="game.date" />
-		</div>
-		<div class="form-group">
-			<label for="venue.name">Venue</label><br />
-			<input class="form-control" placeholder="The Thunderdome!" ng-model="venue.name" type="text" name="venue.name" size="24" />
-		</div>
-		<div class="form-group">
-			<label for="venue.link">Venue Link (Wikipedia)</label><br />
-			<input class="form-control" placeholder="http://wikipedia.com/The_Flipping_Thunderdome" ng-model="venue.link" type="text" name="venue.link" size="48" />
-		</div>
-	</p>
 
 	<h1>Away Team</h1>
 	<p>
@@ -152,17 +121,15 @@
 	</p>
 
 	<h1>Odds</h1>
-
 	<p>
 		<label for="odds.favorite">Favorite</label><br />
 		<input class="form-control" placeholder="Name of team expected to win" name="odds.favorite" type="text" ng-model="odds.favorite" />
 	</p>
-
 	<p>
 		<label for="odds.line">Line</label><br />
+		<span class="help"><a href="http://espn.go.com/ncb/lines">Look Up Lines</a></span><br />
 		<input class="form-control" placeholder="-10" name="odds.line" type="text" ng-model="odds.line" />
 	</p>
-
 	<p>
 		<label for="odds.ou">O/U</label><br />
 		<input class="form-control" placeholder="145.5" name="odds.ou" type="text" ng-model="odds.ou" />
@@ -186,67 +153,67 @@ DEBUG: {{home | json}}
 <h2>Game Thread: ({{away.rank}}) {{away.name}} @ ({{home.rank}}) {{home.name}} ({{game.time}} {{television.channel}})</h2>
 
 <textarea class="form-control" placeholder="145.5" rows="48" cols="72">
-###NCAA Basketball 
+###NCAA Basketball
 
 ---
-({{away.rank}}) [](/{{away.flair}}) **{{away.name}}** ({{away.record}}) @ ({{home.rank}}) [](/{{home.flair}}) **{{home.name}}** ({{home.record}})   
+({{away.rank}}) [](/{{away.flair}}) **{{away.name}}** ({{away.record}}) @ ({{home.rank}}) [](/{{home.flair}}) **{{home.name}}** ({{home.record}})
 
 Tip-Off: {{info.when}}
 
 Venue: [{{venue.name}}]({{venue.link}})
 
------------------------------------------------------------------  
+-----------------------------------------------------------------
 
-**[Join the live IRC chat on freenode, #redditcbb](http://webchat.freenode.net/?channels=#redditcbb)** 
+**[Join the live IRC chat on freenode, #redditcbb](http://webchat.freenode.net/?channels=#redditcbb)**
 
------------------------------------------------------------------  
+-----------------------------------------------------------------
 
-**Television:**  
+**Television:**
 [{{television.channel}}]({{television.url}})
 
-**Radio:**  
+**Radio:**
 [{{radio.station}}]({{radio.url}})
 
-**Internet Streams:**  
+**Internet Streams:**
 [{{stream.name}}]({{stream.url}})
 
------------------------------------------------------------------  
+-----------------------------------------------------------------
 
-**Preview:**  
-[ESPN]({{preview.espn}})  
+**Preview:**
+[ESPN]({{preview.espn}})
 
------------------------------------------------------------------  
+-----------------------------------------------------------------
 
-**Odds**  
-[](/{{odds.favorite}}){{odds.favorite}}    
+**Odds**
+[](/{{odds.favorite}}){{odds.favorite}}
 
 **Game Line:** {{odds.line}}
 **O/U**: {{odds.ou}}
 
------------------------------------------------------------------  
+-----------------------------------------------------------------
 
 **Game Notes:**
 {{game.notes}}
 
-**Thread Notes:**    
+**Thread Notes:**
 
-- Discuss whatever you wish. You can trash talk, but keep it civil.    
+- Discuss whatever you wish. You can trash talk, but keep it civil.
 
-- Turning comment sort to 'new' will help you see the newest posts.    
+- Turning comment sort to 'new' will help you see the newest posts.
 
-- Try [Chrome Refresh](https://chrome.google.com/extensions/detail/aifhnlnghddfdaccgbbpbhjfkmncekmn) or Firefox's [ReloadEvery](https://addons.mozilla.org/en-US/firefox/addon/115/) to auto-refresh this tab.   
+- Try [Chrome Refresh](https://chrome.google.com/extensions/detail/aifhnlnghddfdaccgbbpbhjfkmncekmn) or Firefox's [ReloadEvery](https://addons.mozilla.org/en-US/firefox/addon/115/) to auto-refresh this tab.
 
-- You may also like [reddit stream](http://www.reddit.com/r/CFB/comments/wn9uj/lets_discuss_game_threads_come_fall/c5esw1u) to keep up with comments.  
+- You may also like [reddit stream](http://www.reddit.com/r/CFB/comments/wn9uj/lets_discuss_game_threads_come_fall/c5esw1u) to keep up with comments.
 
-- Check in on the /r/CollegeBasketball chat: **#redditcbb** on freenode([open in browser](http://webchat.freenode.net/?channels=#redditcbb)).     
+- Check in on the /r/CollegeBasketball chat: **#redditcbb** on freenode([open in browser](http://webchat.freenode.net/?channels=#redditcbb)).
 
 - [Follow @reddit_cbb](https://twitter.com/reddit_cbb) on twitter for news, updates, and bad attempts at humor.
 
-- Show your team affiliation - get a team logo by clicking 'edit' in the column on the right  
+- Show your team affiliation - get a team logo by clicking 'edit' in the column on the right
 
 
 
-**Subscribe to these communities**    
+**Subscribe to these communities**
 
 {{away.subreddit}}  | {{home.subreddit}}
 </textarea>
@@ -254,12 +221,8 @@ Venue: [{{venue.name}}]({{venue.link}})
 </div>
 
 
-	<script src="lib/angular.min.js"></script>
-	<script src="app/js/controllers.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!-- <script src="js/bootstrap.min.js"></script> -->
+    <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/app.js"></script>
   </body>
 </html>
