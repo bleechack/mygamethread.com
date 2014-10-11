@@ -5,49 +5,49 @@
     app.directive('pageHeader', function() {
         return {
             restrict: 'E',
-            templateUrl: 'page-header.html',
+            templateUrl: 'partials/page-header.html',
         };
     });
 
     app.directive('gameInformation', function() {
         return {
             restrict: 'E',
-            templateUrl: 'game-information.html',
+            templateUrl: 'partials/game-information.html',
         };
     });
 
     app.directive('awayTeam', function() {
         return {
             restrict: 'E',
-            templateUrl: 'away-team.html',
+            templateUrl: 'partials/away-team.html',
         };
     });
 
     app.directive('homeTeam', function() {
         return {
             restrict: 'E',
-            templateUrl: 'home-team.html',
+            templateUrl: 'partials/home-team.html',
         };
     });
 
     app.directive('mediaInformation', function() {
         return {
             restrict: 'E',
-            templateUrl: 'media-information.html',
+            templateUrl: 'partials/media-information.html',
         };
     });
 
     app.directive('gamePreview', function() {
         return {
             restrict: 'E',
-            templateUrl: 'game-preview.html',
+            templateUrl: 'partials/game-preview.html',
         };
     });
 
     app.directive('gameThread', function() {
         return {
             restrict: 'E',
-            templateUrl: 'game-thread.html',
+            templateUrl: 'partials/game-thread.html',
         };
     });
 
